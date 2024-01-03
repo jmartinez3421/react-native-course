@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { DrawerScreenProps } from "@react-navigation/drawer";
-import { RootDrawerParams } from "../navigation/DrawerNavigator.tsx";
-import { stackStyles } from "../themes/StackTheme.tsx";
+import { RootDrawerParams } from "../../navigation/DrawerNavigator.tsx";
+import { stackStyles } from "../../themes/StackTheme.tsx";
 
 interface Props extends DrawerScreenProps<RootDrawerParams, "Settings"> {}
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { stackStyles } from "../themes/StackTheme.tsx";
+import { stackStyles } from "../../themes/StackTheme.tsx";
 import { StackScreenProps } from "@react-navigation/stack";
-import { RootStackParams } from "../navigation/StackNavigator.tsx";
+import { RootStackParams } from "../../navigation/StackNavigator.tsx";
 
 interface Props extends StackScreenProps<RootStackParams, "PersonScreen"> {}
 

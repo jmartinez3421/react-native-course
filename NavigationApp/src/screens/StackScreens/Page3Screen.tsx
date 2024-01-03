@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
-import { StyledButton } from "../components/StyledButton.tsx";
-import { stackStyles } from "../themes/StackTheme.tsx";
+import { StyledButton } from "../../components/StyledButton.tsx";
+import { stackStyles } from "../../themes/StackTheme.tsx";
 
 interface Props extends StackScreenProps<any> {}
 

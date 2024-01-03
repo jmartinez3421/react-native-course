@@ -1,7 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { StackNavigator } from "./StackNavigator";
-import { SettingsScreen } from "../screens/SettingsScreen.tsx";
+import { SettingsScreen } from "../screens/DrawerScreens/SettingsScreen.tsx";
 import { useWindowDimensions } from "react-native";
 
 export type RootDrawerParams = {

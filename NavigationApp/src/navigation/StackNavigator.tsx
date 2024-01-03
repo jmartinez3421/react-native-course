@@ -1,9 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Page3Screen } from "../screens/Page3Screen.tsx";
-import { Page2Screen } from "../screens/Page2Screen.tsx";
-import { Page1Screen } from "../screens/Page1Screen.tsx";
-import { PersonScreen } from "../screens/PersonScreen.tsx";
+import { Page3Screen } from "../screens/StackScreens/Page3Screen.tsx";
+import { Page2Screen } from "../screens/StackScreens/Page2Screen.tsx";
+import { Page1Screen } from "../screens/StackScreens/Page1Screen.tsx";
+import { PersonScreen } from "../screens/StackScreens/PersonScreen.tsx";
 
 export type RootStackParams = {
     Page1Screen: undefined;

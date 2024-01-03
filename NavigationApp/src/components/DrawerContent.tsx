@@ -15,7 +15,7 @@ const Avatar = () => (
 
 const Menu = ({ navigation }: Props) => (
     <View style={styles.menuContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("StackNavigator")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
             <Text style={styles.menuButtonText}>Stack Navigation</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Settings")}>
