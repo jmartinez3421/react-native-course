@@ -1,15 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleProp, StyleSheet, Text, TouchableOpacity, ViewStyle } from "react-native";
 
 type Props = {
     title: string;
     onPress: () => void;
     disabled?: boolean;
+    sx?: StyleProp<ViewStyle>;
 };
 
-export const StyledButton = ({ title, onPress, disabled }: Props) => {
+export const StyledButton = ({ title, onPress, disabled, sx }: Props) => {
     return (
-        <TouchableOpacity onPress={onPress} disabled={disabled} style={styles.button}>
+        <TouchableOpacity onPress={onPress} disabled={disabled} style={[styles.button, sx]}>
             <Text style={styles.text}>{title}</Text>
         </TouchableOpacity>
     );
