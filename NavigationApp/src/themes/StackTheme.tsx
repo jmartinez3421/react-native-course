@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const stackStyles = StyleSheet.create({
+export const appStyles = StyleSheet.create({
     container: {
         marginHorizontal: 20,
         marginVertical: 10,
@@ -24,4 +24,11 @@ export const stackStyles = StyleSheet.create({
         justifyContent: "space-evenly",
         columnGap: 10,
     },
+    input: {
+        height: 40,
+        marginVertical: 12,
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 10,
+    }
 });

@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { stackStyles } from "../../themes/StackTheme.tsx";
+import { appStyles } from "../../themes/StackTheme.tsx";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParams } from "../../navigation/StackNavigator.tsx";
 
@@ -16,8 +16,8 @@ export const PersonScreen = ({ route, navigation }: Props) => {
     }, []);
 
     return (
-        <View style={stackStyles.container}>
-            <Text style={stackStyles.title}>Welcome</Text>
+        <View style={appStyles.container}>
+            <Text style={appStyles.title}>Welcome</Text>
         </View>
     );
 };

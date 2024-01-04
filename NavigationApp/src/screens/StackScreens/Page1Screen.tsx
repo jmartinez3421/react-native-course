@@ -2,7 +2,7 @@ import React from "react";
 import { Text, useWindowDimensions, View } from "react-native";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import { StyledButton } from "../../components/StyledButton.tsx";
-import { stackStyles } from "../../themes/StackTheme.tsx";
+import { appStyles } from "../../themes/StackTheme.tsx";
 import { Separator } from "../../components/Separator.tsx";
 
 // interface Props extends StackScreenProps<any> {}
@@ -26,12 +26,12 @@ export const Page1Screen = ({ navigation }: Props) => {
     }, [width]);
 
     return (
-        <View style={stackStyles.container}>
-            <Text style={stackStyles.title}>Page1Screen</Text>
+        <View style={appStyles.container}>
+            <Text style={appStyles.title}>Page1Screen</Text>
             <StyledButton title="Go to Page 2" onPress={() => navigation.navigate("Page2Screen")} />
             <Separator />
-            <Text style={stackStyles.subtitle}>Navigate with arguments</Text>
-            <View style={stackStyles.buttonsRow}>
+            <Text style={appStyles.subtitle}>Navigate with arguments</Text>
+            <View style={appStyles.buttonsRow}>
                 <StyledButton
                     title="Go to Pedro"
                     onPress={() =>
