@@ -5,6 +5,7 @@ import { ContactScreen } from "../screens/TopScreens/ContactScreen.tsx";
 import { AlbumsScreen } from "../screens/TopScreens/AlbumsScreen.tsx";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Platform, Text } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 export type RootTopTabParams = {
     ChatScreen: undefined;
@@ -23,17 +24,17 @@ const TabIcon = ({ props, routeName }: { props: TabBarIconProps; routeName: keyo
     const icon = React.useMemo(() => {
         switch (routeName) {
             case "ChatScreen":
-                return "Ch";
+                return "chatbubble";
             case "ContactScreen":
-                return "Ct";
+                return "people-circle";
             case "AlbumsScreen":
-                return "Al";
+                return "albums";
             default:
                 return "";
         }
     }, [routeName]);
 
-    return <Text style={{ color: props.color }}>{icon}</Text>;
+    return <Icon name={icon} size={20} color={props.color} />;
 };
 
 export const TopTabNavigator = () => {

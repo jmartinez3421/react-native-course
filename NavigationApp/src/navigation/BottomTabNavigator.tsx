@@ -5,6 +5,7 @@ import { StackNavigator } from "./StackNavigator.tsx";
 import { Platform, Text } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { TopTabNavigator } from "./TopTabNavigator.tsx";
+import Icon from "react-native-vector-icons/Ionicons";
 
 type RootTabParams = {
     Tab1Screen: undefined;
@@ -22,17 +23,17 @@ const TabIcon = ({ iconProps, routeName }: { iconProps: IconProps; routeName: ke
     const icon = React.useMemo(() => {
         switch (routeName) {
             case "Tab1Screen":
-                return "🏠";
+                return "home";
             case "Tab2Screen":
-                return "🔎";
+                return "phone-portrait";
             case "Tab3Screen":
-                return "🔧";
+                return "map";
             default:
                 return "";
         }
     }, [routeName]);
 
-    return <Text>{icon}</Text>;
+    return <Icon name={icon} size={iconProps.size ?? 22} color={iconProps.color} />;
 };
 
 const TabIos = createBottomTabNavigator<RootTabParams>();
@@ -56,7 +57,7 @@ const BottomTabIos = () => {
                 backgroundColor: "white",
             }}
         >
-            <TabIos.Screen name="Tab1Screen" options={{ title: "Tab 1" }} component={Tab1Screen} />
+            <TabIos.Screen name="Tab1Screen" options={{ title: "Icons" }} component={Tab1Screen} />
             <TabIos.Screen name="Tab2Screen" options={{ title: "Top Tabs" }} component={TopTabNavigator} />
             <TabIos.Screen name="Tab3Screen" options={{ title: "Stack" }} component={StackNavigator} />
         </TabIos.Navigator>
@@ -74,13 +75,10 @@ const BottomTabAndroid = () => (
         screenOptions={({ route }) => ({
             headerShown: false,
             tabBarIcon: (props) => <TabIcon iconProps={props} routeName={route.name} />,
-            tabBarLabelStyle: {
-                fontSize: 17,
-            },
         })}
         activeColor="#55bb18"
     >
-        <TabAndroid.Screen name="Tab1Screen" options={{ title: "Tab 1" }} component={Tab1Screen} />
+        <TabAndroid.Screen name="Tab1Screen" options={{ title: "Icons" }} component={Tab1Screen} />
         <TabAndroid.Screen name="Tab2Screen" options={{ title: "Top Tabs" }} component={TopTabNavigator} />
         <TabAndroid.Screen name="Tab3Screen" options={{ title: "Stack" }} component={StackNavigator} />
     </TabAndroid.Navigator>

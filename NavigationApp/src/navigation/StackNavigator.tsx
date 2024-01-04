@@ -25,6 +25,7 @@ export const StackNavigator = () => (
                 elevation: 0,
                 shadowColor: "transparent",
             },
+            headerTitleAlign: "center",
             headerBackTitle: "Back",
         }}
     >

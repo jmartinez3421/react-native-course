@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { DrawerContentComponentProps, DrawerContentScrollView } from "@react-navigation/drawer";
+import Icon from "react-native-vector-icons/Ionicons";
 
 interface Props extends DrawerContentComponentProps {}
 
@@ -15,10 +16,16 @@ const Avatar = () => (
 
 const Menu = ({ navigation }: Props) => (
     <View style={styles.menuContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Tabs")} style={styles.menuButton}>
+            <Text>
+                <Icon name="map" size={20} color="#303030" />
+            </Text>
             <Text style={styles.menuButtonText}>Stack Navigation</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Settings")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Settings")} style={styles.menuButton}>
+            <Text>
+                <Icon name="settings" size={20} color="#303030" />
+            </Text>
             <Text style={styles.menuButtonText}>Settings</Text>
         </TouchableOpacity>
     </View>
@@ -49,8 +56,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         rowGap: 20,
     },
+    menuButton: {
+        flexDirection: "row",
+        alignItems: "center",
+        columnGap: 10,
+    },
     menuButtonText: {
         fontSize: 20,
         color: "#303030",
+        alignItems: "center",
     },
 });

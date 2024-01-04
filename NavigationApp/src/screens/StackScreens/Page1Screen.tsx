@@ -16,7 +16,8 @@ export const Page1Screen = ({ navigation }: Props) => {
             headerLeft: () =>
                 width < 768 ? (
                     <StyledButton
-                        title="O"
+                        title="menu"
+                        isIcon
                         onPress={() => navigation.toggleDrawer()}
                         sx={{ marginLeft: 10, borderRadius: 50 }}
                     />
