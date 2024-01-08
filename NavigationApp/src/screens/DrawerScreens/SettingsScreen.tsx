@@ -17,11 +17,11 @@ export const SettingsScreen = ({ navigation }: Props) => {
 
     const handleUserNameChange = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
         setNewUserName(event.nativeEvent.text);
-    }
+    };
 
     const handleUpdateUserName = () => {
         signIn(newUserName);
-    }
+    };
 
     React.useEffect(() => {
         navigation.setOptions({
@@ -33,30 +33,34 @@ export const SettingsScreen = ({ navigation }: Props) => {
         <View style={[appStyles.container, styles.container]}>
             {isLogged ? (
                 <>
-                    {userName ? <Text style={ styles.user }>Welcome { userName }!!</Text> : (
+                    {userName ? (
+                        <Text style={styles.user}>Welcome {userName}!!</Text>
+                    ) : (
                         <View style={styles.contentBox}>
-                            <Text style={ styles.user }>You don't have a username yet</Text>
+                            <Text style={styles.user}>You don't have a username yet</Text>
                             <TextInput
-                                style={ appStyles.input }
+                                style={appStyles.input}
                                 placeholder="Username"
                                 autoCapitalize="none"
-                                onChange={ handleUserNameChange }
-                                value={ newUserName }
-                                />
+                                onChange={handleUserNameChange}
+                                value={newUserName}
+                            />
                             <StyledButton title="Set username" onPress={handleUpdateUserName} />
                         </View>
                     )}
                     {favoriteIcon ? (
                         <View style={styles.contentBox}>
-                            <Text style={ styles.icon }>Your favorite icon is:</Text>
+                            <Text style={styles.icon}>Your favorite icon is:</Text>
                             <Icon name={favoriteIcon} size={100} color="#303030" />
                         </View>
                     ) : (
-                        <Text style={ styles.icon }>You don't have a favorite icon yet</Text>
+                        <Text style={styles.icon}>You don't have a favorite icon yet</Text>
                     )}
                     <StyledButton title="Logout" onPress={logout} />
                 </>
-            ) : <Text>You are not Logged</Text>}
+            ) : (
+                <Text>You are not Logged</Text>
+            )}
         </View>
     );
 };
@@ -74,10 +78,10 @@ const styles = StyleSheet.create({
     },
     user: {
         fontSize: 25,
-        fontWeight: "500"
+        fontWeight: "500",
     },
     icon: {
         fontSize: 20,
-        fontWeight: "400"
-    }
+        fontWeight: "400",
+    },
 });

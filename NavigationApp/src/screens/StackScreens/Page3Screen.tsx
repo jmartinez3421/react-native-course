@@ -15,4 +15,3 @@ export const Page3Screen = ({ navigation }: Props) => {
         </View>
     );
 };
-

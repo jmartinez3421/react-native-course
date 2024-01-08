@@ -7,7 +7,7 @@ import { AuthProvider } from "./src/context/AuthContext.tsx";
 
 const AppState = ({ children }: { children: React.ReactNode }) => {
     return <AuthProvider>{children}</AuthProvider>;
-}
+};
 
 const App = () => {
     return (

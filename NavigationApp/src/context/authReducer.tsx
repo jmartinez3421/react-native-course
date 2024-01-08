@@ -7,11 +7,11 @@ export enum AuthActionType {
 }
 
 export type AuthAction =
-    | { type: AuthActionType.signIn, payload?: string }
+    | { type: AuthActionType.signIn; payload?: string }
     | { type: AuthActionType.logout }
-    | { type: AuthActionType.changeFavoriteIcon, payload: string };
+    | { type: AuthActionType.changeFavoriteIcon; payload: string };
 
-export const authReducer = ( state: AuthState, action: AuthAction ): AuthState => {
+export const authReducer = (state: AuthState, action: AuthAction): AuthState => {
     switch (action.type) {
         case AuthActionType.signIn:
             return {
@@ -34,4 +34,4 @@ export const authReducer = ( state: AuthState, action: AuthAction ): AuthState =
         default:
             return state;
     }
-}
+};

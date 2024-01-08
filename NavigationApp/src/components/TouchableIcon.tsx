@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
     size?: number;
     color?: string;
     disabled?: boolean;
-}
+};
 
 export const TouchableIcon = ({ icon, onPress, size = 22, color = "#303030", disabled }: Props) => {
     return (
@@ -19,4 +19,3 @@ export const TouchableIcon = ({ icon, onPress, size = 22, color = "#303030", dis
         </TouchableOpacity>
     );
 };
-

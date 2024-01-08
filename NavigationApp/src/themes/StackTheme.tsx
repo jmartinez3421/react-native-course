@@ -30,5 +30,5 @@ export const appStyles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         borderRadius: 10,
-    }
+    },
 });
