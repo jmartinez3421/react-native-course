@@ -1,25 +1,20 @@
 import React from "react";
-import { ActivityIndicator, useWindowDimensions, View } from "react-native";
-import { useNowPlayingMovies } from "../hooks/queryHooks.tsx";
+import { ActivityIndicator, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { MovieCard } from "../components/MovieCard.tsx";
-import Carousel from "react-native-snap-carousel";
+import { MovieSlider } from "../components/MovieSlider.tsx";
+import { MovieCarousel } from "../components/MovieCarousel.tsx";
+import { useMovies } from "../hooks/useMovies.tsx";
 
 const HomeScreenInner = () => {
-    const nowPlayingMoviesQuery = useNowPlayingMovies({});
-    const nowPlayingMovies = React.useMemo(() => nowPlayingMoviesQuery.data, [nowPlayingMoviesQuery.data]);
-
-    const { width } = useWindowDimensions();
+    const { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies } = useMovies();
 
     return (
-        <View style={{ height: 450 }}>
-            <Carousel
-                data={nowPlayingMovies}
-                renderItem={({ item }) => <MovieCard movie={item} />}
-                sliderWidth={width}
-                itemWidth={300}
-            />
-        </View>
+        <>
+            <MovieCarousel movies={nowPlayingMovies} />
+            <MovieSlider movies={popularMovies} title="Popular movies" />
+            <MovieSlider movies={topRatedMovies} title="Top rated movies" />
+            <MovieSlider movies={upcomingMovies} title="Upcoming movies" />
+        </>
     );
 };
 
@@ -27,10 +22,10 @@ export const HomeScreen = () => {
     const insets = useSafeAreaInsets();
 
     return (
-        <View style={{ paddingTop: insets.top + 10 }}>
+        <ScrollView style={{ marginTop: insets.top + 10, marginBottom: 10 }}>
             <React.Suspense fallback={<ActivityIndicator color="royalblue" />}>
                 <HomeScreenInner />
             </React.Suspense>
-        </View>
+        </ScrollView>
     );
 };

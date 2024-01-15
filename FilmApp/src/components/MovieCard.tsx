@@ -1,6 +1,8 @@
 import { Movie } from "../types/Movies.ts";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackParams } from "../navigation/StackNavigator.tsx";
 
 type Props = {
     movie: Movie;
@@ -10,10 +12,20 @@ type Props = {
 export const MovieCard = ({ movie, size = "large" }: Props) => {
     const poster_url = React.useMemo(() => `https://image.tmdb.org/t/p/w500${movie.poster_path}`, [movie.poster_path]);
 
+    const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
+    const handlePress = React.useCallback(() => {
+        navigation.navigate("Detail", { movie });
+    }, [movie]);
+
     return (
-        <View style={[styles.container, size === "small" && styles.containerSmall]}>
+        <TouchableOpacity
+            style={[styles.container, size === "small" && styles.containerSmall]}
+            activeOpacity={0.8}
+            onPress={handlePress}
+        >
             <Image source={{ uri: poster_url }} style={styles.image} />
-        </View>
+        </TouchableOpacity>
     );
 };
 
