@@ -24,7 +24,7 @@ export const DetailScreen = ({ route, navigation }: Props) => {
                 </TouchableOpacity>
             </View>
             <MovieDetailHeader movie={movie} />
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.invisibleDiv} />
                 <MovieDetails movie={movie} />
             </ScrollView>
