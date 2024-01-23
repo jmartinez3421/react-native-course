@@ -66,3 +66,8 @@ yarn-error.log
 /coverage
 
 !/.env
+
+# Expo
+.expo
+dist/
+web-build/

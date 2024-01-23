@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MovieSlider } from "../components/MovieSlider.tsx";
 import { MovieCarousel } from "../components/MovieCarousel.tsx";
 import { useMovies } from "../hooks/useMovies.tsx";
+import { GradientBackground } from "../components/GradientBackground.tsx";
 
 const HomeScreenInner = () => {
     const { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies } = useMovies();
@@ -22,10 +23,12 @@ export const HomeScreen = () => {
     const insets = useSafeAreaInsets();
 
     return (
-        <ScrollView style={{ marginTop: insets.top + 10, marginBottom: 10 }}>
-            <React.Suspense fallback={<ActivityIndicator color="royalblue" />}>
-                <HomeScreenInner />
-            </React.Suspense>
-        </ScrollView>
+        <GradientBackground>
+            <ScrollView style={{ marginTop: insets.top + 10, marginBottom: 10 }}>
+                <React.Suspense fallback={<ActivityIndicator color="royalblue" />}>
+                    <HomeScreenInner />
+                </React.Suspense>
+            </ScrollView>
+        </GradientBackground>
     );
 };

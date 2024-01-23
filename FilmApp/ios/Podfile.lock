@@ -1,7 +1,26 @@
 PODS:
   - boost (1.83.0)
+  - BVLinearGradient (2.8.3):
+    - React-Core
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
+  - EXConstants (15.4.5):
+    - ExpoModulesCore
+  - EXFont (11.10.2):
+    - ExpoModulesCore
+  - Expo (50.0.2):
+    - ExpoModulesCore
+  - ExpoFileSystem (16.0.4):
+    - ExpoModulesCore
+  - ExpoKeepAwake (12.8.2):
+    - ExpoModulesCore
+  - ExpoModulesCore (1.11.7):
+    - glog
+    - RCT-Folly (= 2022.05.16.00)
+    - React-Core
+    - React-NativeModulesApple
+    - React-RCTAppDelegate
+    - ReactCommon/turbomodule/core
   - FBLazyVector (0.73.1)
   - FBReactNativeSpec (0.73.1):
     - RCT-Folly (= 2022.05.16.00)
@@ -71,6 +90,8 @@ PODS:
   - hermes-engine (0.73.1):
     - hermes-engine/Pre-built (= 0.73.1)
   - hermes-engine/Pre-built (0.73.1)
+  - ImageColors (2.4.0):
+    - ExpoModulesCore
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2022.05.16.00):
@@ -1137,7 +1158,14 @@ PODS:
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXFont (from `../node_modules/expo-font/ios`)
+  - Expo (from `../node_modules/expo`)
+  - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
+  - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
+  - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - Flipper (= 0.201.0)
@@ -1162,6 +1190,7 @@ DEPENDENCIES:
   - FlipperKit/SKIOSNetworkPlugin (= 0.201.0)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
+  - ImageColors (from `../node_modules/react-native-image-colors/ios`)
   - libevent (~> 2.1.12)
   - OpenSSL-Universal (= 1.1.1100)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
@@ -1235,8 +1264,22 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
+  BVLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EXConstants:
+    :path: "../node_modules/expo-constants/ios"
+  EXFont:
+    :path: "../node_modules/expo-font/ios"
+  Expo:
+    :path: "../node_modules/expo"
+  ExpoFileSystem:
+    :path: "../node_modules/expo-file-system/ios"
+  ExpoKeepAwake:
+    :path: "../node_modules/expo-keep-awake/ios"
+  ExpoModulesCore:
+    :path: "../node_modules/expo-modules-core"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -1246,6 +1289,8 @@ EXTERNAL SOURCES:
   hermes-engine:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2023-11-17-RNv0.73.0-21043a3fc062be445e56a2c10ecd8be028dd9cc5
+  ImageColors:
+    :path: "../node_modules/react-native-image-colors/ios"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -1345,8 +1390,15 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: 26fad476bfa736552bbfa698a06cc530475c1505
+  BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
+  EXConstants: 988aa430ca0f76b43cd46b66e7fae3287f9cc2fc
+  EXFont: 21b9c760abd593ce8f0d5386b558ced76018506f
+  Expo: 6c6526e76864e140363431722b22d0fa3cdeafd2
+  ExpoFileSystem: 39e454b8e7f2358ae2c8f8ec255fede4c3039493
+  ExpoKeepAwake: 0f5cad99603a3268e50af9a6eb8b76d0d9ac956c
+  ExpoModulesCore: f103ff1346136b2926e1654f32b3f45ab0b74830
   FBLazyVector: 2296bacb2fa157a43991048b0a9d71c1c8b65083
   FBReactNativeSpec: df0ebe69acd14ce0be0269cf75b6e338a727259b
   Flipper: c7a0093234c4bdd456e363f2f19b2e4b27652d44
@@ -1360,6 +1412,7 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: 34df9d5034e90bd9bf1505e1ca198760373935af
+  ImageColors: 88be684570585c07ae2750bff34eb7b78bfc53b4
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 7169b2b1c44399c76a47b5deaaba715eeeb476c0
@@ -1412,6 +1465,6 @@ SPEC CHECKSUMS:
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 2b33a7ac96c58cdaa7b810948fc6a2a76ed2d108
 
-PODFILE CHECKSUM: 394a628a14c7e976a80666c186eb7628baa46d96
+PODFILE CHECKSUM: 8395e9bb76679183a672204076e5fb0efc2f56e6
 
 COCOAPODS: 1.14.3
