@@ -16,6 +16,8 @@ export const MovieDetailHeader = ({ movie }: { movie: Movie }) => {
 
 const styles = StyleSheet.create({
     container: {
+        position: "absolute",
+        top: 0,
         width: "100%",
         height: SCREEN_HEIGHT * 0.7,
         overflow: "hidden",

@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Dimensions, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParams } from "../navigation/StackNavigator.tsx";
 import { MovieDetailHeader } from "../components/MovieDetailHeader.tsx";
@@ -8,6 +8,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface Props extends StackScreenProps<RootStackParams, "Detail"> {}
+
+const SCREEN_HEIGHT = Dimensions.get("screen").height;
 
 export const DetailScreen = ({ route, navigation }: Props) => {
     const insets = useSafeAreaInsets();
@@ -21,8 +23,9 @@ export const DetailScreen = ({ route, navigation }: Props) => {
                     <Icon name="arrow-back-outline" size={40} color="#303030" />
                 </TouchableOpacity>
             </View>
+            <MovieDetailHeader movie={movie} />
             <ScrollView>
-                <MovieDetailHeader movie={movie} />
+                <View style={styles.invisibleDiv} />
                 <MovieDetails movie={movie} />
             </ScrollView>
         </View>
@@ -38,5 +41,8 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(255,255,255,0.4)",
         borderRadius: 100,
         padding: 5,
+    },
+    invisibleDiv: {
+        height: SCREEN_HEIGHT * 0.7,
     },
 });
