@@ -1,15 +1,25 @@
 import { QueryKey, UseQueryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { Movie, MovieListResponse } from "../types/Movies.ts";
-import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies, getUpcomingMovies } from "../api/Movies.ts";
+import { Cast, Movie, MovieDetails, MovieListResponse } from "../types/Movies.ts";
+import {
+    getMovieById,
+    getMovieCredits,
+    getNowPlayingMovies,
+    getPopularMovies,
+    getTopRatedMovies,
+    getUpcomingMovies,
+} from "../api/Movies.ts";
 
 type QueryOptions<T, R> = Omit<UseQueryOptions<T, R, T, QueryKey>, "queryKey" | "queryFn"> | undefined;
 interface UseEntitiesProps<T, R> {
     queryOptions?: QueryOptions<T, R>;
 }
 
-interface UseNowPlayingMoviesProps extends UseEntitiesProps<Movie[], MovieListResponse> {
-    page?: number;
+type UseMovieProps<T, R> = UseEntitiesProps<T, R> & {
     language?: string;
+};
+
+interface UseNowPlayingMoviesProps extends UseMovieProps<Movie[], MovieListResponse> {
+    page?: number;
 }
 
 export const MovieCacheKey = "movies";
@@ -43,5 +53,26 @@ export const useUpcomingMovies = ({ page, language, queryOptions }: UseNowPlayin
     useSuspenseQuery({
         queryKey: [MovieCacheKey, UpcomingMoviesCacheKey, page, language],
         queryFn: () => getUpcomingMovies(page, language),
+        ...queryOptions,
+    });
+
+interface UseMovieByIdProps extends UseMovieProps<MovieDetails, MovieDetails> {
+    movieId: number;
+}
+export const useMovie = ({ movieId, language, queryOptions }: UseMovieByIdProps) =>
+    useSuspenseQuery({
+        queryKey: [MovieCacheKey, movieId, language],
+        queryFn: () => getMovieById(movieId, language),
+        ...queryOptions,
+    });
+
+export const MovieCreditsCacheKey = "credits";
+interface UseMovieCreditsProps extends UseMovieProps<Cast[], Cast[]> {
+    movieId: number;
+}
+export const useMovieCredits = ({ movieId, queryOptions }: UseMovieCreditsProps) =>
+    useSuspenseQuery({
+        queryKey: [MovieCreditsCacheKey, movieId],
+        queryFn: () => getMovieCredits(movieId),
         ...queryOptions,
     });
