@@ -4,18 +4,21 @@ import ExpoConstants from "expo-constants";
 import { MenuList, MenuListOptions } from "../components/MenuList";
 
 export const HomeScreen = () => {
-    const menuItems = React.useMemo<MenuListOptions[]>(() => [
-        {
-            name: "Animations",
-            icon: "cube-outline",
-            screen: "AnimationsScreen",
-        },
-        {
-            name: "Animations",
-            icon: "cube-outline",
-            screen: "AnimationsScreen",
-        }
-    ], []);
+    const menuItems = React.useMemo<MenuListOptions[]>(
+        () => [
+            {
+                name: "Animation 101",
+                icon: "cube-outline",
+                screen: "Animation101Screen",
+            },
+            {
+                name: "Animation 102",
+                icon: "move-outline",
+                screen: "Animation102Screen",
+            },
+        ],
+        []
+    );
 
     return (
         <View style={styles.container}>
