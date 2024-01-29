@@ -16,22 +16,38 @@ export const HomeScreen = () => {
                 icon: "move-outline",
                 screen: "Animation102Screen",
             },
+            {
+                name: "Switch",
+                icon: "toggle-outline",
+                screen: "SwitchScreen",
+            },
+            {
+                name: "Alerts",
+                icon: "alert-circle-outline",
+                screen: "AlertScreen",
+            },
+            {
+                name: "Text inputs",
+                icon: "text-outline",
+                screen: "TextInputScreen",
+            },
+            {
+                name: "Pull to refresh",
+                icon: "refresh-outline",
+                screen: "PullToRefreshScreen",
+            },
+            {
+                name: "Section list",
+                icon: "list-outline",
+                screen: "SectionListScreen",
+            },
         ],
         []
     );
 
     return (
-        <View style={styles.container}>
+        <View>
             <MenuList menuItems={menuItems} />
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: ExpoConstants.statusBarHeight,
-        paddingHorizontal: 10,
-        paddingVertical: 20,
-    },
-});

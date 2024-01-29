@@ -1,14 +1,14 @@
 import React from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { appTheme } from "../theme/AppTheme";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParams } from "../navigation/StackNavigator";
+import { HeaderTitle } from "./HeaderTitle";
 
 export interface MenuListOptions {
     name: string;
     icon: keyof typeof Ionicons.glyphMap;
-    screen: string;
+    screen: keyof RootStackParams;
 }
 
 interface Props {
@@ -33,9 +33,7 @@ const MenuListItem = ({ menuItem }: { menuItem: MenuListOptions }) => {
     );
 };
 
-const MenuListHeader = () => <Text style={[appTheme.title, styles.title]}>Menu options</Text>;
-
-const ItemSeparator = () => <View style={styles.separator} />;
+export const ItemSeparator = () => <View style={styles.separator} />;
 
 export const MenuList = ({ menuItems }: Props) => {
     return (
@@ -43,7 +41,7 @@ export const MenuList = ({ menuItems }: Props) => {
             data={menuItems}
             renderItem={({ item }) => <MenuListItem menuItem={item} />}
             keyExtractor={(item) => item.name}
-            ListHeaderComponent={() => <MenuListHeader />}
+            ListHeaderComponent={() => <HeaderTitle title="Menu Options" />}
             ItemSeparatorComponent={() => <ItemSeparator />}
         />
     );
@@ -66,9 +64,6 @@ const styles = StyleSheet.create({
     },
     itemText: {
         fontSize: 20,
-    },
-    title: {
-        marginBottom: 15,
     },
     separator: {
         borderBottomWidth: 1,
