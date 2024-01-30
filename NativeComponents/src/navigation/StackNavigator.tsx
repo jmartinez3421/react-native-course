@@ -9,6 +9,7 @@ import { TextInputScreen } from "../Screens/TextInputScreen";
 import ExpoConstants from "expo-constants";
 import { PullToRefreshScreen } from "../Screens/PullToRefreshScreen";
 import { SectionListScreen } from "../Screens/SectionListScreen";
+import { ModalScreen } from "../Screens/ModalScreen";
 
 export type RootStackParams = {
     HomeScreen: undefined;
@@ -19,6 +20,7 @@ export type RootStackParams = {
     TextInputScreen: undefined;
     PullToRefreshScreen: undefined;
     SectionListScreen: undefined;
+    ModalScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParams>();
@@ -45,6 +47,7 @@ export const StackNavigator = () => {
             <Stack.Screen name="TextInputScreen" component={TextInputScreen} />
             <Stack.Screen name="PullToRefreshScreen" component={PullToRefreshScreen} />
             <Stack.Screen name="SectionListScreen" component={SectionListScreen} />
+            <Stack.Screen name="ModalScreen" component={ModalScreen} />
         </Stack.Navigator>
     );
 };

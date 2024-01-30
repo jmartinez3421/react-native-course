@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import ExpoConstants from "expo-constants";
+import { View } from "react-native";
 import { MenuList, MenuListOptions } from "../components/MenuList";
 
 export const HomeScreen = () => {
@@ -40,6 +39,11 @@ export const HomeScreen = () => {
                 name: "Section list",
                 icon: "list-outline",
                 screen: "SectionListScreen",
+            },
+            {
+                name: "Modal",
+                icon: "browsers-outline",
+                screen: "ModalScreen",
             },
         ],
         []
