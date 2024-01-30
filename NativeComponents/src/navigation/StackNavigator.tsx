@@ -10,6 +10,7 @@ import ExpoConstants from "expo-constants";
 import { PullToRefreshScreen } from "../Screens/PullToRefreshScreen";
 import { SectionListScreen } from "../Screens/SectionListScreen";
 import { ModalScreen } from "../Screens/ModalScreen";
+import { InfiniteScrollScreen } from "../Screens/InfiniteScrollScreen";
 
 export type RootStackParams = {
     HomeScreen: undefined;
@@ -21,6 +22,7 @@ export type RootStackParams = {
     PullToRefreshScreen: undefined;
     SectionListScreen: undefined;
     ModalScreen: undefined;
+    InfiniteScrollScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParams>();
@@ -48,6 +50,7 @@ export const StackNavigator = () => {
             <Stack.Screen name="PullToRefreshScreen" component={PullToRefreshScreen} />
             <Stack.Screen name="SectionListScreen" component={SectionListScreen} />
             <Stack.Screen name="ModalScreen" component={ModalScreen} />
+            <Stack.Screen name="InfiniteScrollScreen" component={InfiniteScrollScreen} />
         </Stack.Navigator>
     );
 };
