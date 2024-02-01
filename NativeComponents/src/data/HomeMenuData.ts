@@ -46,4 +46,9 @@ export const HOME_MENU_DATA: MenuListOptions[] = [
         icon: "infinite-outline",
         screen: "InfiniteScrollScreen",
     },
+    {
+        name: "Slides",
+        icon: "film-outline",
+        screen: "SlidesScreen",
+    },
 ];
