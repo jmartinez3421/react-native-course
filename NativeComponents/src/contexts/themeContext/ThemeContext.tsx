@@ -1,5 +1,6 @@
 import React from "react";
 import { lightTheme, themeReducer, ThemeState } from "./themeReducer";
+import { useColorScheme } from "react-native";
 
 type ThemeContextType = {
     theme: ThemeState;
@@ -16,6 +17,8 @@ const initialTheme: ThemeContextType = {
 export const ThemeContext = React.createContext<ThemeContextType>(initialTheme);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+    const colorScheme = useColorScheme();
+
     const [theme, dispatch] = React.useReducer(themeReducer, lightTheme);
 
     const setDarkTheme = () => {
@@ -25,6 +28,14 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const setLightTheme = () => {
         dispatch({ type: "set_light_theme" });
     };
+
+    React.useEffect(() => {
+        if (colorScheme === "dark") {
+            setDarkTheme();
+        } else {
+            setLightTheme();
+        }
+    }, [colorScheme]);
 
     return (
         <ThemeContext.Provider

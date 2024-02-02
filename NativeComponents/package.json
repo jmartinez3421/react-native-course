@@ -16,6 +16,7 @@
     "expo-blur": "~12.9.1",
     "expo-constants": "~15.4.5",
     "expo-status-bar": "~1.11.1",
+    "expo-system-ui": "~2.9.3",
     "react": "18.2.0",
     "react-native": "0.73.2",
     "react-native-gesture-handler": "^2.14.1",
