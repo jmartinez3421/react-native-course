@@ -4,6 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParams } from "../navigation/StackNavigator";
 import { HeaderTitle } from "./HeaderTitle";
+import { useThemeContext } from "../contexts/themeContext/ThemeContext";
 
 export interface MenuListOptions {
     name: string;
@@ -17,23 +18,29 @@ interface Props {
 
 const MenuListItem = ({ menuItem }: { menuItem: MenuListOptions }) => {
     const navigation = useNavigation<NavigationProp<RootStackParams>>();
+    const {
+        theme: { colors },
+    } = useThemeContext();
 
     return (
         <TouchableOpacity onPress={() => navigation.navigate(menuItem.screen as any)}>
             <View style={styles.itemContainer}>
                 <View style={styles.rowFlex}>
-                    <Ionicons name={menuItem.icon} size={20} color="purple" />
-                    <Text style={styles.itemText}>{menuItem.name}</Text>
+                    <Ionicons name={menuItem.icon} size={20} color={colors.primary} />
+                    <Text style={[styles.itemText, { color: colors.text }]}>{menuItem.name}</Text>
                 </View>
                 <Text>
-                    <Ionicons name="chevron-forward-outline" size={20} />
+                    <Ionicons name="chevron-forward-outline" size={20} color={colors.primary} />
                 </Text>
             </View>
         </TouchableOpacity>
     );
 };
 
-export const ItemSeparator = () => <View style={styles.separator} />;
+export const ItemSeparator = () => {
+    const { theme } = useThemeContext();
+    return <View style={[styles.separator, { borderBottomColor: theme.dividerColor }]} />;
+};
 
 export const MenuList = ({ menuItems }: Props) => {
     return (

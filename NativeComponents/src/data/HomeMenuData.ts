@@ -51,4 +51,9 @@ export const HOME_MENU_DATA: MenuListOptions[] = [
         icon: "film-outline",
         screen: "SlidesScreen",
     },
+    {
+        name: "Themes",
+        icon: "brush-outline",
+        screen: "ThemeScreen",
+    },
 ];

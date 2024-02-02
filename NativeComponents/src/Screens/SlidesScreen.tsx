@@ -14,6 +14,9 @@ const Pagination = ({
     numberOfData: number;
     onClick: (index: number) => void;
 }) => {
+    const {
+        theme: { colors },
+    } = useThemeContext();
     const { fadeIn, fadeOut, opacity } = useAnimation();
 
     const navigation = useNavigation<NavigationProp<RootStackParams>>();
@@ -36,7 +39,7 @@ const Pagination = ({
                         <View
                             style={{
                                 ...styles.dot,
-                                backgroundColor: i === index ? "purple" : "gray",
+                                backgroundColor: i === index ? colors.primary : colors.card,
                             }}
                         />
                     </TouchableOpacity>
@@ -55,13 +58,18 @@ const Pagination = ({
 };
 
 import { useAnimation } from "../hooks/useAnimation";
+import { useThemeContext } from "../contexts/themeContext/ThemeContext";
 
 const SlideItem = ({ item }: { item: Slide }) => {
+    const {
+        theme: { colors },
+    } = useThemeContext();
+
     return (
         <View style={styles.slideContainer}>
             <Image source={item.img} style={styles.sliderImg} />
-            <Text style={styles.sliderTitle}>{item.title}</Text>
-            <Text style={styles.sliderDesc}>{item.desc}</Text>
+            <Text style={[styles.sliderTitle, { color: colors.primary }]}>{item.title}</Text>
+            <Text style={[styles.sliderDesc, { color: colors.text }]}>{item.desc}</Text>
         </View>
     );
 };

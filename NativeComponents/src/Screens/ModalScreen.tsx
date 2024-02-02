@@ -3,8 +3,13 @@ import { Modal, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-n
 import { HeaderTitle } from "../components/HeaderTitle";
 import { StyledButton } from "../components/StyledButton";
 import { BlurView } from "expo-blur";
+import { useThemeContext } from "../contexts/themeContext/ThemeContext";
 
 export const ModalScreen = () => {
+    const {
+        theme: { colors },
+    } = useThemeContext();
+
     const [modalVisible, setModalVisible] = React.useState(false);
 
     return (
@@ -26,9 +31,9 @@ export const ModalScreen = () => {
                             <View style={{ flex: 1 }} />
                         </TouchableWithoutFeedback>
                     </BlurView>
-                    <View style={styles.modalBox}>
+                    <View style={[styles.modalBox, { backgroundColor: colors.card }]}>
                         <HeaderTitle title="Modal" />
-                        <Text>Body</Text>
+                        <Text style={{ color: colors.text }}>Body</Text>
                         <StyledButton onPress={() => setModalVisible(false)} label="Close modal" />
                     </View>
                 </View>
@@ -45,7 +50,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     modalBox: {
-        backgroundColor: "#fff",
         width: "90%",
         paddingHorizontal: 20,
         paddingVertical: 30,

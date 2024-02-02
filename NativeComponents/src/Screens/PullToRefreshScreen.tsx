@@ -1,9 +1,13 @@
 import React from "react";
-import { RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
+import { RefreshControl, ScrollView } from "react-native";
 import { HeaderTitle } from "../components/HeaderTitle";
 import ExpoConstants from "expo-constants";
+import { useThemeContext } from "../contexts/themeContext/ThemeContext";
 
 export const PullToRefreshScreen = () => {
+    const {
+        theme: { colors },
+    } = useThemeContext();
     const [refreshing, setRefreshing] = React.useState(false);
     const [data, setData] = React.useState<string>();
 
@@ -26,7 +30,7 @@ export const PullToRefreshScreen = () => {
                 <RefreshControl
                     refreshing={refreshing}
                     onRefresh={handleRefresh}
-                    progressBackgroundColor="purple"
+                    progressBackgroundColor={colors.primary}
                     progressViewOffset={20}
                     colors={["white", "orange"]}
                 />

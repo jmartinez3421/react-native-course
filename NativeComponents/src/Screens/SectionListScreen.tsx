@@ -4,22 +4,36 @@ import ExpoConstants from "expo-constants";
 import { SECTION_LIST_DATA } from "../data/SectionListData";
 import { HeaderTitle } from "../components/HeaderTitle";
 import { ItemSeparator } from "../components/MenuList";
+import { useThemeContext } from "../contexts/themeContext/ThemeContext";
 
 export const SectionListScreen = () => {
+    const {
+        theme: { colors },
+    } = useThemeContext();
     return (
         <View style={styles.container}>
             <SectionList
                 sections={SECTION_LIST_DATA}
-                renderItem={({ item }) => <Text style={styles.textItem}>{item.name}</Text>}
+                renderItem={({ item }) => <Text style={[styles.textItem, { color: colors.text }]}>{item.name}</Text>}
                 keyExtractor={(item) => item.key}
                 ListHeaderComponent={() => <HeaderTitle title="Section List" sx={{ marginBottom: 0 }} />}
-                renderSectionHeader={({ section }) => <HeaderTitle title={section.house} sx={styles.sectionHeader} />}
+                renderSectionHeader={({ section }) => (
+                    <HeaderTitle
+                        title={section.house}
+                        sx={[styles.sectionHeader, { backgroundColor: colors.background }]}
+                    />
+                )}
                 stickySectionHeadersEnabled
                 ListFooterComponent={() => (
-                    <HeaderTitle title={`Number of houses: ${SECTION_LIST_DATA.length}`} sx={styles.sectionHeader} />
+                    <HeaderTitle
+                        title={`Number of houses: ${SECTION_LIST_DATA.length}`}
+                        sx={[styles.sectionHeader, { backgroundColor: colors.background }]}
+                    />
                 )}
                 renderSectionFooter={({ section }) => (
-                    <Text style={styles.sectionFooter}>Number of characters: {section.data.length}</Text>
+                    <Text style={[styles.sectionFooter, { color: colors.text, backgroundColor: colors.background }]}>
+                        Number of characters: {section.data.length}
+                    </Text>
                 )}
                 ItemSeparatorComponent={() => <ItemSeparator />}
                 showsVerticalScrollIndicator={false}
@@ -37,7 +51,6 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     sectionHeader: {
-        backgroundColor: "white",
         paddingBottom: 5,
         paddingTop: 15,
         marginBottom: 0,
@@ -46,7 +59,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     sectionFooter: {
-        backgroundColor: "white",
         paddingBottom: 5,
         paddingTop: 5,
         marginBottom: 0,

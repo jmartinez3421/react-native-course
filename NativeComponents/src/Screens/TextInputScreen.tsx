@@ -12,13 +12,35 @@ import {
 import { HeaderTitle } from "../components/HeaderTitle";
 import { SwitchRow } from "../components/SwitchRow";
 import { useForm } from "../hooks/useForm";
+import { useThemeContext } from "../contexts/themeContext/ThemeContext";
 
 const ValueRow = ({ title, value }: { title: string; value: string | boolean }) => {
+    const {
+        theme: { colors },
+    } = useThemeContext();
     return (
         <View style={styles.valueRow}>
-            <Text style={styles.textBold}>{title}</Text>
-            <Text style={styles.value}>{value.toString()}</Text>
+            <Text style={[styles.textBold, { color: colors.text }]}>{title}</Text>
+            <Text style={[styles.value, { color: colors.text }]}>{value.toString()}</Text>
         </View>
+    );
+};
+
+const StyledTextInput = (props: React.ComponentProps<typeof TextInput>) => {
+    const {
+        theme: { colors },
+    } = useThemeContext();
+    return (
+        <TextInput
+            style={{
+                ...styles.input,
+                ...(props.style as Object),
+                borderColor: colors.border,
+                color: colors.text,
+            }}
+            placeholderTextColor={colors.text}
+            {...props}
+        />
     );
 };
 
@@ -36,30 +58,26 @@ export const TextInputScreen = () => {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={{ flex: 1, justifyContent: "space-around" }}>
                     <HeaderTitle title="TextInputs" />
-                    <TextInput
-                        style={styles.input}
+                    <StyledTextInput
                         placeholder="Insert your name"
                         autoCorrect={false}
                         autoCapitalize="words"
                         onChangeText={(value) => onChange(value, "name")}
                     />
-                    <TextInput
-                        style={styles.input}
+                    <StyledTextInput
                         placeholder="Insert your email"
                         autoCorrect={false}
                         autoCapitalize="none"
                         onChangeText={(value) => onChange(value, "email")}
                         keyboardType="email-address"
                     />
-                    <TextInput
-                        style={styles.input}
+                    <StyledTextInput
                         placeholder="Insert your phone"
                         autoCorrect={false}
                         keyboardType="phone-pad"
                         onChangeText={(value) => onChange(value, "phone")}
                     />
-                    <TextInput
-                        style={styles.input}
+                    <StyledTextInput
                         placeholder="Insert your password"
                         autoCorrect={false}
                         secureTextEntry={true}

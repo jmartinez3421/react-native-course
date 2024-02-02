@@ -1,7 +1,8 @@
 import React from "react";
-import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Platform, StyleSheet, View } from "react-native";
 import { HeaderTitle } from "../components/HeaderTitle";
 import androidPrompt from "react-native-prompt-android";
+import { StyledButton } from "../components/StyledButton";
 
 export const AlertScreen = () => {
     const handleAlertDisplay = () => {
@@ -54,32 +55,19 @@ export const AlertScreen = () => {
     return (
         <View>
             <HeaderTitle title="Alerts" />
-            <TouchableOpacity onPress={handleAlertDisplay} style={styles.button}>
-                <Text style={styles.buttonText}>Show alert</Text>
-            </TouchableOpacity>
-            {Platform.OS === "ios" && (
-                <TouchableOpacity onPress={handleIOSPromptDisplay} style={styles.button}>
-                    <Text style={styles.buttonText}>Show IOS prompt</Text>
-                </TouchableOpacity>
-            )}
-            {Platform.OS === "android" && (
-                <TouchableOpacity onPress={handleAndroidPromptDisplay} style={styles.button}>
-                    <Text style={styles.buttonText}>Show Android prompt</Text>
-                </TouchableOpacity>
-            )}
+            <View style={styles.buttonsContainer}>
+                <StyledButton onPress={handleAlertDisplay} label="Show alert" />
+                {Platform.OS === "ios" && <StyledButton onPress={handleIOSPromptDisplay} label="Show IOS prompt" />}
+                {Platform.OS === "android" && (
+                    <StyledButton onPress={handleAndroidPromptDisplay} label="Show Android prompt" />
+                )}
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    button: {
-        backgroundColor: "royalblue",
-        borderRadius: 10,
-        padding: 10,
-        marginBottom: 20,
-    },
-    buttonText: {
-        color: "white",
-        textAlign: "center",
+    buttonsContainer: {
+        rowGap: 20,
     },
 });
