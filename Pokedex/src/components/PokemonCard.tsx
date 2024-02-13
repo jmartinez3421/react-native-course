@@ -3,20 +3,31 @@ import { TouchableOpacity, useWindowDimensions, View, Text, Image } from "react-
 import { SimplePokemon } from "@/types/pokemon.types";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { FadeInImage } from "@/components/FadeInImage";
+import { useImageColors } from "@/hooks/useImageColors";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "@/navigation/StackNavigation";
 
 // @ts-ignore
 import WhitePokeball from "@/assets/white-pokeball.png";
-import { useImageColors } from "@/hooks/useImageColors";
 
 export const PokemonCard = ({ pokemon }: { pokemon: SimplePokemon }) => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
     const { width: windowWidth } = useWindowDimensions();
     const { styles } = useStyles(stylesheet);
 
     const { bgColor } = useImageColors(pokemon.img);
 
+    const handleCardPress = () => {
+        navigation.navigate("PokemonScreen", {
+            simplePokemon: pokemon,
+            color: bgColor,
+        });
+    };
+
     return (
         <View style={[styles.cardContainer, { width: windowWidth * 0.4, backgroundColor: bgColor }]}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleCardPress} activeOpacity={0.8}>
                 <View style={styles.contentContainer}>
                     <View>
                         <Text style={styles.pokemonName}>{`${pokemon.name} \n#${pokemon.id}`}</Text>
@@ -53,6 +64,7 @@ const stylesheet = createStyleSheet(() => ({
         fontWeight: "bold",
         top: 20,
         left: 10,
+        textTransform: "capitalize",
     },
     pokeball: {
         width: 100,
