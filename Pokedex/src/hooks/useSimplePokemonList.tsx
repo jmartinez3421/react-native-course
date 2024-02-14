@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SimplePokemon } from "@/types/pokemon.types";
+import { SimplePokemon } from "@/types/pokemon_list.types";
 import { getPokemonList } from "@/api/pokeapi";
 import { getLimitAndOffset } from "@/utils/urlUtils";
 import { mapPokemonList } from "@/utils/listUtils";

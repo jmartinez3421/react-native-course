@@ -1,4 +1,4 @@
-import { PokemonListObject, SimplePokemon } from "@/types/pokemon.types";
+import { PokemonListObject, SimplePokemon } from "@/types/pokemon_list.types";
 
 const getPokemonId = (url: string): string => {
     const splitUrl = url.split("/");

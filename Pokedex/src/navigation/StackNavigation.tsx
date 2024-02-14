@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { PokemonScreen } from "@/screens/PokemonScreen";
 import { useStyles } from "react-native-unistyles";
 import { HomeScreen } from "@/screens/HomeScreen";
-import { SimplePokemon } from "@/types/pokemon.types";
+import { SimplePokemon } from "@/types/pokemon_list.types";
 
 export type RootStackParamList = {
     HomeScreen: undefined;

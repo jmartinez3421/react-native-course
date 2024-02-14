@@ -3,7 +3,7 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { useStyles, createStyleSheet } from "react-native-unistyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { SimplePokemon } from "@/types/pokemon.types";
+import { SimplePokemon } from "@/types/pokemon_list.types";
 import { useNavigation } from "@react-navigation/native";
 
 import WhitePokeball from "@/assets/white-pokeball.png";

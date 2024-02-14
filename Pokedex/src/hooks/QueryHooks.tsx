@@ -1,6 +1,7 @@
 import { QueryKey, UseQueryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { getPokemonList } from "@/api/pokeapi";
-import { PokemonListResponse } from "@/types/pokemon.types";
+import { getPokemon, getPokemonList } from "@/api/pokeapi";
+import { PokemonListResponse } from "@/types/pokemon_list.types";
+import { PokemonFull } from "@/types/pokemon.types";
 
 type QueryOptions<T, R> = Omit<UseQueryOptions<T, R, T, QueryKey>, "queryKey" | "queryFn"> | undefined;
 interface UseEntitiesProps<T, R> {
@@ -18,6 +19,17 @@ export const useListPokemon = ({ queryOptions, limit = 20, offset = 0 }: UseList
     return useSuspenseQuery({
         queryKey: [PokemonListCacheKey, limit, offset],
         queryFn: () => getPokemonList(limit, offset),
+        ...queryOptions,
+    });
+};
+
+interface UsePokemonProps extends UseEntitiesProps<PokemonFull, PokemonFull> {
+    id: string;
+}
+export const usePokemon = ({ queryOptions, id }: UsePokemonProps) => {
+    return useSuspenseQuery({
+        queryKey: ["pokemon", id],
+        queryFn: () => getPokemon(id),
         ...queryOptions,
     });
 };

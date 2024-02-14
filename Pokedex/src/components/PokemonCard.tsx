@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, useWindowDimensions, View, Text, Image } from "react-native";
-import { SimplePokemon } from "@/types/pokemon.types";
+import { SimplePokemon } from "@/types/pokemon_list.types";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { FadeInImage } from "@/components/FadeInImage";
 import { useImageColors } from "@/hooks/useImageColors";
