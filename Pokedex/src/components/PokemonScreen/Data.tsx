@@ -4,6 +4,7 @@ import { usePokemon } from "@/hooks/QueryHooks";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Loading } from "@/components/Layout/Loading";
 import { DataBlock } from "@/components/PokemonScreen/DataBlock";
+import { StatsChart } from "@/components/PokemonScreen/StatsChart";
 
 type ContentDataProps = {
     id: string;
@@ -27,7 +28,9 @@ const PokemonDataInner = ({ id }: ContentDataProps) => {
                     ))}
                 </View>
             </DataBlock>
-            <DataBlock title="Sprites" />
+            <DataBlock title="Stats">
+                <StatsChart stats={pokemon.stats} />
+            </DataBlock>
         </>
     );
 };

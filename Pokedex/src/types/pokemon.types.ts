@@ -169,7 +169,21 @@ export interface GenerationViii {
 export interface Stat {
     base_stat: number;
     effort: number;
-    stat: Species;
+    stat: StatTypeValue;
+}
+
+export enum StatType {
+    hp = "hp",
+    attack = "attack",
+    defense = "defense",
+    specialAttack = "special-attack",
+    specialDefense = "special-defense",
+    speed = "speed",
+}
+
+export interface StatTypeValue {
+    name: StatType;
+    url: string;
 }
 
 export interface Type {
