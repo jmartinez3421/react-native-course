@@ -1,10 +1,11 @@
 import React from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View, StyleSheet } from "react-native";
 import { usePokemon } from "@/hooks/QueryHooks";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Loading } from "@/components/Layout/Loading";
 import { DataBlock } from "@/components/PokemonScreen/DataBlock";
 import { StatsChart } from "@/components/PokemonScreen/StatsChart";
+import { SpritesList } from "@/components/PokemonScreen/SpritesList";
 
 type ContentDataProps = {
     id: string;
@@ -19,7 +20,7 @@ const PokemonDataInner = ({ id }: ContentDataProps) => {
 
     return (
         <>
-            <DataBlock title="Types">
+            <DataBlock title="Types" style={{ marginTop: 400 }}>
                 <View style={styles.typesRow}>
                     {pokemon.types.map((t) => (
                         <Text key={t.type.name} style={[styles.regularText, { textTransform: "capitalize" }]}>
@@ -30,6 +31,12 @@ const PokemonDataInner = ({ id }: ContentDataProps) => {
             </DataBlock>
             <DataBlock title="Stats">
                 <StatsChart stats={pokemon.stats} />
+            </DataBlock>
+            <DataBlock title="Weight">
+                <Text style={styles.regularText}>{pokemon.weight} Kg</Text>
+            </DataBlock>
+            <DataBlock title="Sprites">
+                <SpritesList sprites={pokemon.sprites} />
             </DataBlock>
         </>
     );
@@ -48,9 +55,7 @@ export const PokemonData = (props: ContentDataProps) => {
 
 const stylesheet = createStyleSheet((theme) => ({
     container: {
-        flex: 1,
-        marginTop: -180,
-        paddingTop: 200,
+        ...StyleSheet.absoluteFillObject,
         paddingHorizontal: theme.margins.xl,
     },
     regularText: {
