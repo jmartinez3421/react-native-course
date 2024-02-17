@@ -188,5 +188,33 @@ export interface StatTypeValue {
 
 export interface Type {
     slot: number;
-    type: Species;
+    type: PokemonType;
+}
+
+export enum PokemonTypeElement {
+    Normal = "normal",
+    Fighting = "fighting",
+    Flying = "flying",
+    Poison = "poison",
+    Ground = "ground",
+    Rock = "rock",
+    Bug = "bug",
+    Ghost = "ghost",
+    Steel = "steel",
+    Fire = "fire",
+    Water = "water",
+    Grass = "grass",
+    Electric = "electric",
+    Psychic = "psychic",
+    Ice = "ice",
+    Dragon = "dragon",
+    Dark = "dark",
+    Fairy = "fairy",
+    Unknown = "unknown",
+    Shadow = "shadow",
+}
+
+export interface PokemonType {
+    name: PokemonTypeElement;
+    url: string;
 }

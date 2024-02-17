@@ -6,6 +6,7 @@ import { Loading } from "@/components/Layout/Loading";
 import { DataBlock } from "@/components/PokemonScreen/DataBlock";
 import { StatsChart } from "@/components/PokemonScreen/StatsChart";
 import { SpritesList } from "@/components/PokemonScreen/SpritesList";
+import { PokemonType } from "@/components/PokemonScreen/PokemonType";
 
 type ContentDataProps = {
     id: string;
@@ -23,9 +24,7 @@ const PokemonDataInner = ({ id }: ContentDataProps) => {
             <DataBlock title="Types" style={{ marginTop: 400 }}>
                 <View style={styles.typesRow}>
                     {pokemon.types.map((t) => (
-                        <Text key={t.type.name} style={[styles.regularText, { textTransform: "capitalize" }]}>
-                            {t.type.name}
-                        </Text>
+                        <PokemonType type={t} key={t.type.name} />
                     ))}
                 </View>
             </DataBlock>
