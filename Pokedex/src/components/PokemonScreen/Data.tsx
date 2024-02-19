@@ -7,6 +7,8 @@ import { DataBlock } from "@/components/PokemonScreen/DataBlock";
 import { StatsChart } from "@/components/PokemonScreen/StatsChart";
 import { SpritesList } from "@/components/PokemonScreen/SpritesList";
 import { PokemonType } from "@/components/PokemonScreen/PokemonType";
+import { MovesTable } from "@/components/PokemonScreen/MovesTable";
+import { FadeInImage } from "@/components/FadeInImage";
 
 type ContentDataProps = {
     id: string;
@@ -37,6 +39,11 @@ const PokemonDataInner = ({ id }: ContentDataProps) => {
             <DataBlock title="Sprites">
                 <SpritesList sprites={pokemon.sprites} />
             </DataBlock>
+            <DataBlock title="Moves">
+                <Text style={styles.regularText}>{pokemon.moves.length} moves</Text>
+                <MovesTable moves={pokemon.moves} />
+            </DataBlock>
+            <FadeInImage uri={pokemon.sprites.front_default} style={styles.image} />
         </>
     );
 };
@@ -65,5 +72,10 @@ const stylesheet = createStyleSheet((theme) => ({
         alignItems: "center",
         flexWrap: "wrap",
         gap: 10,
+    },
+    image: {
+        width: 130,
+        height: 130,
+        alignSelf: "center",
     },
 }));
