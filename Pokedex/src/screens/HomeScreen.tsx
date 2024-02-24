@@ -30,6 +30,7 @@ const stylesheet = createStyleSheet(() => ({
     container: {
         flex: 1,
         overflow: "visible",
-        padding: 15,
+        paddingHorizontal: 15,
+        paddingTop: 15,
     },
 }));
