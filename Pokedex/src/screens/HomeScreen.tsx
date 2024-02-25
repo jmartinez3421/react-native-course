@@ -31,6 +31,5 @@ const stylesheet = createStyleSheet(() => ({
         flex: 1,
         overflow: "visible",
         paddingHorizontal: 15,
-        paddingTop: 15,
     },
 }));

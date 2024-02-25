@@ -21,7 +21,7 @@ export const PokemonFlatList = () => {
                 ListFooterComponent={<ActivityIndicator size="large" color="#303030" style={{ height: 100 }} />}
                 showsVerticalScrollIndicator={false}
                 numColumns={2}
-                ListHeaderComponent={<Text style={[styles.title, { marginTop: insets.top }]}>Pokedex</Text>}
+                ListHeaderComponent={<Text style={[styles.title, { marginTop: insets.top + 20 }]}>Pokedex</Text>}
             />
         </View>
     );

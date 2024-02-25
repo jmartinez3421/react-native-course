@@ -21,12 +21,21 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#5158bb"
       },
       "package": "com.jmartinez402.Pokedex"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b3c9650d-944f-485d-918f-df797e2c34f0"
+      }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/b3c9650d-944f-485d-918f-df797e2c34f0"
     }
   }
 }

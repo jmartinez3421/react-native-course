@@ -4,6 +4,7 @@ import { ListScreenNavigation } from "@/navigation/ListScreenNavigation";
 import { Platform } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { SearchScreenNavigation } from "@/navigation/SearchScreenNavigation";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 export type RootTabsParamList = {
     Home: undefined;
@@ -14,7 +15,7 @@ const Tab = createBottomTabNavigator<RootTabsParamList>();
 
 export const BottomTabNavigation = () => (
     <Tab.Navigator
-        screenOptions={{
+        screenOptions={({ route }) => ({
             headerShown: false,
             tabBarActiveTintColor: "tomato",
             tabBarLabelStyle: {
@@ -27,13 +28,14 @@ export const BottomTabNavigation = () => (
                 elevation: 0,
                 height: Platform.OS === "ios" ? 90 : 70,
                 position: "absolute",
+                display: getFocusedRouteNameFromRoute(route) === "PokemonScreen" ? "none" : "flex",
             },
             tabBarIconStyle: {
                 width: 20,
                 height: 20,
                 marginTop: 5,
             },
-        }}
+        })}
         sceneContainerStyle={{
             backgroundColor: "#fff",
         }}

@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import "@/unistyles/unistyles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BottomTabNavigation } from "@/navigation/BottomTabNavigation";
+import { Platform, StatusBar } from "react-native";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const AppState = ({ children }: { children: React.ReactNode }) => (
 
 const App = () => (
     <AppState>
+        <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
         <BottomTabNavigation />
     </AppState>
 );
