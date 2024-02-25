@@ -1,7 +1,7 @@
+import * as Location from "expo-location";
 import { PermissionStatus } from "expo-location";
 import React from "react";
-import * as Location from "expo-location";
-import { AppState } from "react-native";
+import { AppState, Linking } from "react-native";
 
 export interface PermissionState {
     locationStatus: PermissionStatus;
@@ -29,12 +29,18 @@ export const PermissionsProvider = ({ children }: { children: React.ReactNode })
     const [permissions, setPermissions] = React.useState<PermissionState>(permissionInitialState);
 
     const requestLocationPermission = async () => {
-        const { status } = await Location.requestForegroundPermissionsAsync();
+        const { status,  canAskAgain, granted, expires, } = await Location.requestForegroundPermissionsAsync();
+
+        console.log(granted, canAskAgain, expires);
+
+        if (status === PermissionStatus.DENIED && !canAskAgain) {
+            Linking.openSettings();
+        }
+
         setPermissions({ ...permissions, locationStatus: status });
     };
 
     const checkLocationPermission = async () => {
-        console.log("Checking location permission");
         const { status } = await Location.getForegroundPermissionsAsync();
         setPermissions({ ...permissions, locationStatus: status });
     };

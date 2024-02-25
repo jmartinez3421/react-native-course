@@ -8,8 +8,8 @@ export const PermissionsScreen = () => {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.text}>The app needs to access your location to work properly</Text>
             <StyledButton title="Permissions" onPress={requestLocationPermission} />
-            <Text>{JSON.stringify(permissions)}</Text>
         </View>
     );
 };
@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        rowGap: 20,
+        rowGap: 25,
     },
+    text: {
+        fontSize: 18,
+        color: "#303030",
+        textAlign: "center",
+        paddingHorizontal: 30,
+    }
 });
