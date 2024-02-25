@@ -5,7 +5,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { FadeInImage } from "@/components/FadeInImage";
 import { useImageColors } from "@/hooks/useImageColors";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "@/navigation/StackNavigation";
+import { RootStackParamList } from "@/navigation/NavigationParams";
 
 // @ts-ignore
 import WhitePokeball from "@/assets/white-pokeball.png";

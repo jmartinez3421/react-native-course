@@ -1,11 +1,11 @@
 import React from "react";
 import { View } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
-import { RootStackParamList } from "@/navigation/StackNavigation";
 import { PokemonNotFound } from "@/404/404";
 import { useStyles, createStyleSheet } from "react-native-unistyles";
 import { PokemonScreenHeader } from "@/components/PokemonScreen/Header";
 import { PokemonData } from "@/components/PokemonScreen/Data";
+import { RootStackParamList } from "@/navigation/NavigationParams";
 
 interface Props extends StackScreenProps<RootStackParamList, "PokemonScreen"> {}
 

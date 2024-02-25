@@ -1,9 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StackNavigation } from "@/navigation/StackNavigation";
-import { SearchScreen } from "@/screens/SearchScreen";
+import { ListScreenNavigation } from "@/navigation/ListScreenNavigation";
 import { Platform } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { SearchScreenNavigation } from "@/navigation/SearchScreenNavigation";
 
 export type RootTabsParamList = {
     Home: undefined;
@@ -40,7 +40,7 @@ export const BottomTabNavigation = () => (
     >
         <Tab.Screen
             name="Home"
-            component={StackNavigation}
+            component={ListScreenNavigation}
             options={{
                 tabBarLabel: "Pokemon List",
                 tabBarIcon: ({ color, size }) => <Ionicons name="list-outline" size={size} color={color} />,
@@ -48,7 +48,7 @@ export const BottomTabNavigation = () => (
         />
         <Tab.Screen
             name="Search"
-            component={SearchScreen}
+            component={SearchScreenNavigation}
             options={{
                 tabBarLabel: "Search",
                 tabBarIcon: ({ color, size }) => <Ionicons name="search" size={size} color={color} />,

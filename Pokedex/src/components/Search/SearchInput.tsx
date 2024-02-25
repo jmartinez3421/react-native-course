@@ -2,13 +2,32 @@ import React from "react";
 import { StyleProp, TextInput, View, ViewStyle } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useDebounceValue } from "@/hooks/useDebounceValue";
 
 interface Props {
     sx?: StyleProp<ViewStyle>;
+    onDebounce?: (value: string) => void;
+    onChange?: (value: string) => void;
 }
 
-export const SearchInput = ({ sx }: Props) => {
+export const SearchInput = ({ sx, onDebounce, onChange }: Props) => {
     const { styles } = useStyles(stylesheet);
+
+    const [value, setValue] = React.useState("");
+    const debouncedValue = useDebounceValue(value, 300);
+
+    React.useEffect(() => {
+        if (onDebounce) {
+            onDebounce(debouncedValue);
+        }
+    }, [debouncedValue]);
+
+    const handleChange = (text: string) => {
+        setValue(text);
+        if (onChange) {
+            onChange(text);
+        }
+    };
 
     return (
         <View style={sx}>
@@ -18,6 +37,8 @@ export const SearchInput = ({ sx }: Props) => {
                     placeholder="Search pokemon"
                     autoCapitalize="none"
                     autoCorrect={false}
+                    value={value}
+                    onChangeText={handleChange}
                 />
                 <Ionicons name={"search"} size={30} color={"#303030"} />
             </View>

@@ -1,8 +1,8 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
-import { RootStackParamList } from "@/navigation/StackNavigation";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { RootStackParamList } from "@/navigation/NavigationParams";
 
 export const PokemonNotFound = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
