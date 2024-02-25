@@ -33,3 +33,7 @@ export const usePokemon = ({ queryOptions, id }: UsePokemonProps) => {
         ...queryOptions,
     });
 };
+
+export const useListAllPokemon = ({ queryOptions }: UseEntitiesProps<PokemonListResponse, PokemonListResponse>) => {
+    return useListPokemon({ limit: 1300, offset: 0, queryOptions });
+};
