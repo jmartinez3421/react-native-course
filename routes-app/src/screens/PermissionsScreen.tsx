@@ -4,7 +4,7 @@ import { StyledButton } from "@/components/layout/StyledButton";
 import { usePermissionsContext } from "@/contexts/PermissionContext";
 
 export const PermissionsScreen = () => {
-    const { requestLocationPermission, permissions } = usePermissionsContext();
+    const { requestLocationPermission } = usePermissionsContext();
 
     return (
         <View style={styles.container}>
@@ -26,5 +26,5 @@ const styles = StyleSheet.create({
         color: "#303030",
         textAlign: "center",
         paddingHorizontal: 30,
-    }
+    },
 });

@@ -29,9 +29,7 @@ export const PermissionsProvider = ({ children }: { children: React.ReactNode })
     const [permissions, setPermissions] = React.useState<PermissionState>(permissionInitialState);
 
     const requestLocationPermission = async () => {
-        const { status,  canAskAgain, granted, expires, } = await Location.requestForegroundPermissionsAsync();
-
-        console.log(granted, canAskAgain, expires);
+        const { status, canAskAgain } = await Location.requestForegroundPermissionsAsync();
 
         if (status === PermissionStatus.DENIED && !canAskAgain) {
             Linking.openSettings();
