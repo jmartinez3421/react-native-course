@@ -5,10 +5,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StackNavigation } from "@/navigation/StackNavigation";
 import { StatusBar } from "react-native";
 import { PermissionsProvider } from "@/contexts/PermissionContext";
+import { LocationProvider } from "@/contexts/LocationContext";
 
 const AppProviders = ({ children }: { children: React.ReactNode }) => (
     <NavigationContainer>
-        <PermissionsProvider>{children}</PermissionsProvider>
+        <PermissionsProvider>
+            <LocationProvider>{children}</LocationProvider>
+        </PermissionsProvider>
     </NavigationContainer>
 );
 

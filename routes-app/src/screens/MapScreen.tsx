@@ -1,19 +1,25 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import MapView from "react-native-maps";
+import { Map } from "@/components/Map";
+import { useLocationContext } from "@/contexts/LocationContext";
+import { LoadingScreen } from "@/screens/LoadingScreen";
 
 export const MapScreen = () => {
+    const { lastKnownLocation, getLocation } = useLocationContext();
+
+    React.useEffect(() => {
+        if (!lastKnownLocation) {
+            getLocation();
+        }
+    }, []);
+
+    if (!lastKnownLocation) {
+        return <LoadingScreen />;
+    }
+
     return (
         <View style={styles.container}>
-            <MapView
-                style={styles.map}
-                initialRegion={{
-                    latitude: 37.78825,
-                    longitude: -122.4324,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                }}
-            />
+            <Map initialLocation={lastKnownLocation} showsUserLocation />
         </View>
     );
 };
@@ -21,9 +27,5 @@ export const MapScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    map: {
-        height: "100%",
-        width: "100%",
     },
 });
